@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% var pageTitle = 'Admin Dashboard - Smart Complaint Portal'; %>
+  <%- include('../partials/head') %>
+</head>
+<body>
+  <div class="admin-layout">
+    <%- include('../partials/admin-sidebar') %>
+
+    <div class="admin-content">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+          <h2 class="fw-bold mb-0">Admin Dashboard</h2>
+          <p class="text-muted">Welcome, <%= adminUsername %></p>
+        </div>
+      </div>
+
+      <div class="row g-4 mb-4">
+        <div class="col-md-3 col-6">
+          <div class="card stat-card p-3">
+            <div class="text-muted small">Total Complaints</div>
+            <div class="stat-value"><%= stats.total %></div>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="card stat-card pending p-3">
+            <div class="text-muted small">Pending</div>
+            <div class="stat-value"><%= stats.pending %></div>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="card stat-card in-progress p-3">
+            <div class="text-muted small">In Progress</div>
+            <div class="stat-value"><%= stats.inProgress %></div>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="card stat-card resolved p-3">
+            <div class="text-muted small">Resolved</div>
+            <div class="stat-value"><%= stats.resolved %></div>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="card stat-card p-3">
+            <div class="text-muted small">Total Sectors</div>
+            <div class="stat-value"><%= stats.totalSectors %></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===================== Sector-wise Complaint Analytics ===================== -->
+      <div class="card border-0 shadow-sm p-4 mb-4">
+        <h5 class="fw-bold mb-3"><i class="bi bi-bar-chart-fill me-2"></i>Sector-wise Complaint Analytics</h5>
+        <canvas id="sectorChart" height="100"></canvas>
+      </div>
+
+      <a href="/admin/complaints" class="btn btn-primary">
+        <i class="bi bi-card-checklist me-1"></i>Manage All Complaints
+      </a>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script>
+    // Sector-wise complaint count data, passed from the server
+    const sectorLabels = <%- chartLabels %>;
+    const sectorCounts = <%- chartData %>;
+
+    const ctx = document.getElementById('sectorChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: sectorLabels,
+        datasets: [{
+          label: 'Number of Complaints',
+          data: sectorCounts,
+          backgroundColor: '#1d4e89',
+          borderRadius: 6,
+          maxBarThickness: 60
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+          title: { display: false }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: { stepSize: 1 }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

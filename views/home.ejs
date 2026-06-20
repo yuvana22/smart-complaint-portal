@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% var pageTitle = 'Smart Complaint Management Portal'; %>
+  <%- include('partials/head') %>
+</head>
+<body>
+
+  <%- include('partials/public-navbar') %>
+
+  <!-- ===================== Hero / Home ===================== -->
+  <header class="hero-section text-center">
+    <div class="container">
+      <h1 class="display-4">Smart Complaint Management Portal</h1>
+      <p class="lead mt-3">Report public issues. Get them routed to the right sector automatically. Track resolution in real time.</p>
+      <div class="mt-4">
+        <a href="/register" class="btn btn-accent btn-lg me-2"><i class="bi bi-person-plus-fill me-1"></i>Register</a>
+        <a href="/login" class="btn btn-outline-light btn-lg"><i class="bi bi-box-arrow-in-right me-1"></i>Login</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== About ===================== -->
+  <section id="about" class="bg-white">
+    <div class="container text-center">
+      <h2 class="section-title">About the Project</h2>
+      <p class="section-subtitle col-lg-8 mx-auto">
+        The Smart Complaint Management Portal lets citizens raise complaints about civic issues like roads,
+        drainage, water supply, and street lights. Every complaint is automatically mapped to the responsible
+        sector using the Area Name and Pin Code, so it reaches the right authority without manual sorting.
+        Admins can track, filter, and resolve complaints through a dedicated dashboard with live analytics.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== Features ===================== -->
+  <section id="features">
+    <div class="container text-center">
+      <h2 class="section-title">Features</h2>
+      <p class="section-subtitle">Everything you need for transparent civic complaint resolution</p>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card feature-card p-4">
+            <div class="feature-icon"><i class="bi bi-diagram-3-fill"></i></div>
+            <h5>Auto Sector Mapping</h5>
+            <p class="text-muted mb-0">Complaints are automatically routed to the correct sector based on Area Name and Pin Code.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card feature-card p-4">
+            <div class="feature-icon"><i class="bi bi-geo-alt-fill"></i></div>
+            <h5>Map Integration</h5>
+            <p class="text-muted mb-0">View complaint locations on an interactive map powered by Leaflet & OpenStreetMap.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card feature-card p-4">
+            <div class="feature-icon"><i class="bi bi-graph-up-arrow"></i></div>
+            <h5>Live Analytics</h5>
+            <p class="text-muted mb-0">Admins get sector-wise complaint analytics and status breakdowns at a glance.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card feature-card p-4">
+            <div class="feature-icon"><i class="bi bi-search"></i></div>
+            <h5>Complaint Tracking</h5>
+            <p class="text-muted mb-0">Citizens can track the live status of their complaint using a unique Complaint ID.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card feature-card p-4">
+            <div class="feature-icon"><i class="bi bi-shield-lock-fill"></i></div>
+            <h5>Secure Authentication</h5>
+            <p class="text-muted mb-0">Session-based login with bcrypt password hashing for both users and admins.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card feature-card p-4">
+            <div class="feature-icon"><i class="bi bi-phone-fill"></i></div>
+            <h5>Fully Responsive</h5>
+            <p class="text-muted mb-0">Works seamlessly across desktops, tablets, and mobile devices.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Statistics ===================== -->
+  <section class="stats-section text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 mb-4">
+          <div class="stat-number">5+</div>
+          <div>Sectors Covered</div>
+        </div>
+        <div class="col-md-3 mb-4">
+          <div class="stat-number">8</div>
+          <div>Complaint Categories</div>
+        </div>
+        <div class="col-md-3 mb-4">
+          <div class="stat-number">24/7</div>
+          <div>Complaint Submission</div>
+        </div>
+        <div class="col-md-3 mb-4">
+          <div class="stat-number">100%</div>
+          <div>Transparent Tracking</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Contact ===================== -->
+  <section id="contact" class="bg-white text-center">
+    <div class="container">
+      <h2 class="section-title">Contact</h2>
+      <p class="section-subtitle">Have questions about this project?</p>
+      <p><i class="bi bi-envelope-fill me-2"></i>support@complaintportal.local</p>
+      <p><i class="bi bi-telephone-fill me-2"></i>+91-00000-00000</p>
+    </div>
+  </section>
+
+  <footer class="text-center">
+    <div class="container">
+      <p class="mb-0">&copy; <%= new Date().getFullYear() %> Smart Complaint Management Portal — Final Year CSP Project</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

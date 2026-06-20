@@ -1,0 +1,25 @@
+<!-- ===========================================
+     User Navbar (Dashboard pages)
+     =========================================== -->
+<nav class="navbar navbar-expand-lg navbar-dark public-navbar">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="/dashboard">
+      <i class="bi bi-megaphone-fill me-2"></i>Smart Complaint Portal
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#userNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="userNav">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-2">
+        <li class="nav-item"><a class="nav-link" href="/dashboard"><i class="bi bi-speedometer2 me-1"></i>Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link" href="/complaints/raise"><i class="bi bi-file-earmark-plus me-1"></i>Raise Complaint</a></li>
+        <li class="nav-item"><a class="nav-link" href="/complaints/my"><i class="bi bi-list-task me-1"></i>My Complaints</a></li>
+        <li class="nav-item"><a class="nav-link" href="/complaints/track"><i class="bi bi-search me-1"></i>Track</a></li>
+        <li class="nav-item">
+          <span class="nav-link text-white-50"><i class="bi bi-person-circle me-1"></i><%= userEmail %></span>
+        </li>
+        <li class="nav-item"><a class="btn btn-light btn-sm" href="/logout">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

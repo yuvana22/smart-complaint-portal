@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% var pageTitle = 'Admin Login - Smart Complaint Portal'; %>
+  <%- include('../partials/head') %>
+</head>
+<body>
+  <div class="auth-wrapper" style="background: linear-gradient(135deg, #2c2c2c, #1d4e89);">
+    <div class="card auth-card p-4 p-md-5">
+      <div class="text-center mb-4">
+        <i class="bi bi-shield-lock-fill" style="font-size:2.5rem; color:#1d4e89;"></i>
+        <h3 class="mt-2 fw-bold">Admin Login</h3>
+        <p class="text-muted">Restricted access for administrators only</p>
+      </div>
+
+      <%- include('../partials/alerts') %>
+
+      <form action="/admin/login" method="POST">
+        <div class="mb-3">
+          <label class="form-label">Username</label>
+          <input type="text" name="username" class="form-control" placeholder="admin" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <input type="password" name="password" class="form-control" placeholder="Your password" required>
+        </div>
+        <button type="submit" class="btn btn-dark w-100 py-2">Login as Admin</button>
+      </form>
+
+      <p class="text-center mt-4 mb-0">
+        <a href="/login" class="text-muted small"><i class="bi bi-arrow-left me-1"></i>Back to User Login</a>
+      </p>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

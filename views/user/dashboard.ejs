@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% var pageTitle = 'My Dashboard - Smart Complaint Portal'; %>
+  <%- include('../partials/head') %>
+</head>
+<body>
+  <%- include('../partials/user-navbar') %>
+
+  <div class="container py-5">
+    <h2 class="fw-bold mb-1">Welcome back!</h2>
+    <p class="text-muted mb-4"><%= userEmail %></p>
+
+    <div class="row g-4 mb-4">
+      <div class="col-md-3 col-6">
+        <div class="card stat-card p-3">
+          <div class="text-muted small">Total Complaints</div>
+          <div class="stat-value"><%= stats.total %></div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6">
+        <div class="card stat-card pending p-3">
+          <div class="text-muted small">Pending</div>
+          <div class="stat-value"><%= stats.pending %></div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6">
+        <div class="card stat-card in-progress p-3">
+          <div class="text-muted small">In Progress</div>
+          <div class="stat-value"><%= stats.inProgress %></div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6">
+        <div class="card stat-card resolved p-3">
+          <div class="text-muted small">Resolved</div>
+          <div class="stat-value"><%= stats.resolved %></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-4">
+        <a href="/complaints/raise" class="text-decoration-none">
+          <div class="card feature-card p-4 text-center h-100">
+            <div class="feature-icon"><i class="bi bi-file-earmark-plus"></i></div>
+            <h5>Raise Complaint</h5>
+            <p class="text-muted mb-0">Submit a new complaint about a public issue</p>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-4">
+        <a href="/complaints/my" class="text-decoration-none">
+          <div class="card feature-card p-4 text-center h-100">
+            <div class="feature-icon"><i class="bi bi-list-task"></i></div>
+            <h5>View My Complaints</h5>
+            <p class="text-muted mb-0">See all complaints you've submitted so far</p>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-4">
+        <a href="/complaints/track" class="text-decoration-none">
+          <div class="card feature-card p-4 text-center h-100">
+            <div class="feature-icon"><i class="bi bi-search"></i></div>
+            <h5>Track Complaint</h5>
+            <p class="text-muted mb-0">Check the live status using a Complaint ID</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

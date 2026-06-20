@@ -1,0 +1,200 @@
+/* =====================================================
+   Smart Complaint Management Portal
+   Custom Stylesheet (on top of Bootstrap 5)
+   ===================================================== */
+
+:root {
+  --primary: #1d4e89;
+  --primary-dark: #163d6b;
+  --accent: #ff8c42;
+  --success: #2e7d32;
+  --warning: #f9a825;
+  --danger: #c62828;
+  --bg-light: #f4f7fb;
+}
+
+body {
+  background-color: var(--bg-light);
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+/* ---------- Navbar ---------- */
+.public-navbar {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+}
+
+/* ---------- Hero Section ---------- */
+.hero-section {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: #fff;
+  padding: 100px 0 80px;
+}
+.hero-section h1 {
+  font-weight: 700;
+}
+.hero-section .btn-accent {
+  background-color: var(--accent);
+  border: none;
+  color: #fff;
+}
+.hero-section .btn-accent:hover {
+  background-color: #e87a2c;
+  color: #fff;
+}
+
+/* ---------- Sections ---------- */
+section {
+  padding: 70px 0;
+}
+.section-title {
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin-bottom: 10px;
+}
+.section-subtitle {
+  color: #6c757d;
+  margin-bottom: 40px;
+}
+
+/* ---------- Feature Cards ---------- */
+.feature-card {
+  border: none;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  height: 100%;
+}
+.feature-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+.feature-icon {
+  font-size: 2.2rem;
+  color: var(--primary);
+  margin-bottom: 12px;
+}
+
+/* ---------- Stats Section ---------- */
+.stats-section {
+  background-color: var(--primary-dark);
+  color: #fff;
+}
+.stat-number {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* ---------- Auth Pages ---------- */
+.auth-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+}
+.auth-card {
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.25);
+  max-width: 440px;
+  width: 100%;
+}
+
+/* ---------- Dashboard Stat Cards ---------- */
+.stat-card {
+  border: none;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+  border-left: 5px solid var(--primary);
+}
+.stat-card.pending { border-left-color: var(--warning); }
+.stat-card.in-progress { border-left-color: #1976d2; }
+.stat-card.resolved { border-left-color: var(--success); }
+.stat-card .stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+/* ---------- Admin Layout ---------- */
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+}
+.admin-sidebar {
+  width: 250px;
+  background: var(--primary-dark);
+  color: #fff;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+.sidebar-brand {
+  font-weight: 700;
+  font-size: 1.2rem;
+  padding: 22px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.sidebar-nav {
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+}
+.sidebar-nav li a {
+  display: block;
+  color: #d7e3f4;
+  text-decoration: none;
+  padding: 12px 22px;
+  font-size: 0.95rem;
+  transition: background 0.15s ease;
+}
+.sidebar-nav li a:hover {
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+}
+.sidebar-nav li a i {
+  margin-right: 10px;
+}
+.admin-content {
+  flex-grow: 1;
+  padding: 30px;
+}
+
+/* ---------- Status Badges ---------- */
+.badge-pending { background-color: var(--warning); color: #4a3500; }
+.badge-progress { background-color: #1976d2; }
+.badge-resolved { background-color: var(--success); }
+
+/* ---------- Priority Badges ---------- */
+.badge-low { background-color: #6c757d; }
+.badge-medium { background-color: #f9a825; color: #4a3500; }
+.badge-high { background-color: #c62828; }
+
+/* ---------- Map ---------- */
+#complaintMap, #detailsMap {
+  height: 280px;
+  border-radius: 10px;
+  z-index: 0;
+}
+
+/* ---------- Misc ---------- */
+.required-asterisk {
+  color: var(--danger);
+}
+footer {
+  background: var(--primary-dark);
+  color: #cdd9ea;
+  padding: 30px 0;
+}
+
+@media (max-width: 768px) {
+  .admin-sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .admin-layout {
+    flex-direction: column;
+  }
+}

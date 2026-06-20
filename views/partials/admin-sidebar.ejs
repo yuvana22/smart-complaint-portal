@@ -1,0 +1,14 @@
+<!-- ===========================================
+     Admin Sidebar
+     =========================================== -->
+<div class="admin-sidebar">
+  <div class="sidebar-brand">
+    <i class="bi bi-shield-lock-fill me-2"></i>Admin Panel
+  </div>
+  <ul class="sidebar-nav">
+    <li><a href="/admin/dashboard"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
+    <li><a href="/admin/complaints"><i class="bi bi-card-checklist"></i> Manage Complaints</a></li>
+    <li><a href="/logout" onclick="event.preventDefault(); document.getElementById('admin-logout-form').submit();"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+  </ul>
+  <form id="admin-logout-form" action="/admin/logout" method="GET" class="d-none"></form>
+</div>

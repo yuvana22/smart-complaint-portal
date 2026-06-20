@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% var pageTitle = 'Track Complaint - Smart Complaint Portal'; %>
+  <%- include('../partials/head') %>
+</head>
+<body>
+  <%- include('../partials/user-navbar') %>
+
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-7">
+        <h2 class="fw-bold mb-1"><i class="bi bi-search me-2"></i>Track Complaint</h2>
+        <p class="text-muted mb-4">Enter your Complaint ID to view its current status</p>
+
+        <form action="/complaints/track/search" method="GET" class="card border-0 shadow-sm p-3 mb-4">
+          <div class="input-group">
+            <input type="text" name="complaint_id" class="form-control" placeholder="e.g. CMP-1001" required>
+            <button type="submit" class="btn btn-primary"><i class="bi bi-search me-1"></i>Track</button>
+          </div>
+        </form>
+
+        <% if (notFound) { %>
+          <div class="alert alert-warning">
+            <i class="bi bi-exclamation-triangle-fill me-1"></i>No complaint found with that ID. Please check and try again.
+          </div>
+        <% } %>
+
+        <% if (complaint) { %>
+          <div class="card border-0 shadow-sm p-4">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <h4 class="fw-bold mb-0"><%= complaint.complaint_id %></h4>
+              <% if (complaint.status === 'Pending') { %>
+                <span class="badge badge-pending fs-6">Pending</span>
+              <% } else if (complaint.status === 'In Progress') { %>
+                <span class="badge badge-progress fs-6">In Progress</span>
+              <% } else { %>
+                <span class="badge badge-resolved fs-6">Resolved</span>
+              <% } %>
+            </div>
+            <table class="table table-borderless mb-3">
+              <tr><th width="180">Category</th><td><%= complaint.category %></td></tr>
+              <tr><th>Area</th><td><%= complaint.area_name %> (<%= complaint.pincode %>)</td></tr>
+              <tr><th>Assigned Sector</th><td><%= complaint.sector_no %></td></tr>
+              <tr><th>Priority</th><td><span class="badge badge-<%= complaint.priority.toLowerCase() %>"><%= complaint.priority %></span></td></tr>
+              <tr><th>Date Submitted</th><td><%= new Date(complaint.created_at).toLocaleString() %></td></tr>
+            </table>
+
+            <% if (complaint.latitude && complaint.longitude) { %>
+              <div id="trackMap" style="height: 250px; border-radius: 10px;"></div>
+            <% } %>
+          </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+  <% if (complaint && complaint.latitude && complaint.longitude) { %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <script>
+      const map = L.map('trackMap').setView([<%= complaint.latitude %>, <%= complaint.longitude %>], 14);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+      }).addTo(map);
+      L.marker([<%= complaint.latitude %>, <%= complaint.longitude %>])
+        .addTo(map)
+        .bindPopup('<%= complaint.area_name %> - <%= complaint.complaint_id %>')
+        .openPopup();
+    </script>
+  <% } %>
+</body>
+</html>
